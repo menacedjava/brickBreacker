@@ -15,7 +15,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
             private static final int HEIGHT = 400;
 
             private int topX = 300, topY = 350;
-            private int ballDX = 2, ballDY = -2;
+            private int topDX = 2, ballDY = -2;
             private int padX = 250;
             private final int PAD_WIDTH = 100, PAD_HEIGHT = 15;
             private boolean left = false, right = false;
@@ -96,12 +96,12 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
 
 
             private void moveBall() {
-                topX += ballDX;
+                topX += topDX;
                 topY += ballDY;
 
 
                 if (topX < 0 || topX > WIDTH - 15) {
-                    ballDX = -ballDX;
+                    topDX = -topDX;
                 }
                 if (topY < 0) {
                     ballDY = -ballDY;
@@ -115,7 +115,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
 
                 if (topY > HEIGHT) {
                     ballDY = 0;
-                    ballDX = 0;
+                    topDX = 0;
                 }
             }
 
