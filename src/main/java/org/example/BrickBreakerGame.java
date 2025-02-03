@@ -14,7 +14,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
             private static final int WIDTH = 600;
             private static final int HEIGHT = 400;
 
-            private int ballX = 300, ballY = 350;
+            private int topX = 300, ballY = 350;
             private int ballDX = 2, ballDY = -2;
             private int padX = 250;
             private final int PAD_WIDTH = 100, PAD_HEIGHT = 15;
@@ -51,7 +51,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
 
 
                 g.setColor(Color.RED);
-                g.fillOval(ballX, ballY, 15, 15); // To'pni chizish
+                g.fillOval(topX, ballY, 15, 15); // To'pni chizish
 
 
                 g.setColor(Color.BLUE);
@@ -96,11 +96,11 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
 
 
             private void moveBall() {
-                ballX += ballDX;
+                topX += ballDX;
                 ballY += ballDY;
 
 
-                if (ballX < 0 || ballX > WIDTH - 15) {
+                if (topX < 0 || topX > WIDTH - 15) {
                     ballDX = -ballDX;
                 }
                 if (ballY < 0) {
@@ -108,7 +108,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
                 }
 
 
-                if (ballY + 15 >= HEIGHT - PAD_HEIGHT - 10 && ballX >= padX && ballX <= padX + PAD_WIDTH) {
+                if (ballY + 15 >= HEIGHT - PAD_HEIGHT - 10 && topX >= padX && topX <= padX + PAD_WIDTH) {
                     ballDY = -ballDY;
                 }
 
@@ -137,7 +137,7 @@ public class BrickBreakerGame extends JPanel implements KeyListener, ActionListe
                             int brickX = j * BRICK_WIDTH + 50;
                             int brickY = i * BRICK_HEIGHT + 50;
 
-                            if (ballX + 15 > brickX && ballX < brickX + BRICK_WIDTH && ballY + 15 > brickY && ballY < brickY + BRICK_HEIGHT) {
+                            if (topX + 15 > brickX && topX < brickX + BRICK_WIDTH && ballY + 15 > brickY && ballY < brickY + BRICK_HEIGHT) {
                                 bricks[i][j] = false;
                                 ballDY = -ballDY;
                             }
